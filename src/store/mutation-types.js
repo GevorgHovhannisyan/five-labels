@@ -1,0 +1,75 @@
+// app
+export const SET_APP_VERSION = "SET_APP_VERSION"
+// locale
+export const SET_LOCALE = "SET_LOCALE"
+// error
+export const SHOW_ERROR = "SHOW_ERROR"
+export const ERROR = "ERROR"
+// success
+export const SHOW_SUCCESS = "SHOW_SUCCESS"
+export const SUCCESS = "SUCCESS"
+// loading
+export const SHOW_LOADING = "SHOW_LOADING"
+// auth
+export const IS_LOGGED_IN = "IS_LOGGED_IN"
+export const SAVE_TOKEN = "SAVE_TOKEN"
+export const SAVE_USER = "SAVE_USER"
+export const LOGOUT = "LOGOUT"
+export const EMAIL_VERIFIED = "EMAIL_VERIFIED"
+export const RESET_EMAIL_SENT = "RESET_EMAIL_SENT"
+export const SHOW_CHANGE_PASSWORD_INPUTS = "SHOW_CHANGE_PASSWORD_INPUTS"
+export const SET_NOTOFICATIONS = "SET_NOTOFICATIONS"
+export const SET_CONTACT = "SET_CONTACT"
+
+// products
+export const SET_SHAPES = "SET_SHAPES"
+export const SET_CORNERS = "SET_CORNERS"
+export const SET_SIZES = "SET_SIZES"
+export const SET_FINISHES = "SET_FINISHES"
+export const SET_MATERIALS = "SET_MATERIALS"
+export const SET_PRODUCT = "SET_PRODUCT"
+
+export const SET_SHAPE = "SET_SHAPE"
+export const SET_CORNER = "SET_CORNER"
+export const SET_SIZE = "SET_SIZE"
+export const SET_FINISH = "SET_FINISH"
+export const SET_MATERIAL = "SET_MATERIAL"
+
+export const SET_PRODUCT_MATERIALS = "SET_PRODUCT_MATERIALS"
+export const SET_DIRECTIONS = "SET_DIRECTIONS"
+export const SET_QUANTITIES = "SET_QUANTITIES"
+export const SET_ORDER_IMAGE = "SET_ORDER_IMAGE"
+export const SET_SAVE_IMAGE = "SET_SAVE_IMAGE"
+export const NO_SAVE_IMAGE = "NO_SAVE_IMAGE"
+
+export const SET_CALCULATE = "SET_CALCULATE"
+export const SET_PRODUCT_INFORMATION = "SET_PRODUCT_INFORMATION"
+export const CLEAR_STEPS_DATA = "CLEAR_STEPS_DATA"
+
+// ORDERS
+export const SET_USER_ORDERS = "SET_USER_ORDERS"
+export const DELETE_ORDER = "DELETE_ORDER"
+export const SET_CHECKOUT_INFO = "SET_CHECKOUT_INFO"
+export const SET_CHECKED_ORDERS = "SET_CHECKED_ORDERS"
+export const SET_COUNT = "SET_COUNT"
+export const INCREASE_CART_COUNT = "INCREASE_CART_COUNT"
+export const DECREASE_CART_COUNT = "DECREASE_CART_COUNT"
+export const SET_IMAGE = "SET_IMAGE"
+export const SET_SAVE_QTY = "SET_SAVE_QTY"
+export const SET_OLD_QTY = "SET_OLD_QTY"
+export const SET_EDIT_ORDER = "SET_EDIT_ORDER"
+
+// ADDRESSES
+export const SET_ADDRESSES = "SET_ADDRESSES"
+export const DELETE_SHIPPING_ADDRESS = "DELETE_SHIPPING_ADDRESS"
+export const SET_ADDRESS = "SET_ADDRESS"
+export const SET_PAYMENT_METHODS = "SET_PAYMENT_METHODS"
+export const DELETE_PAYMENT_METHOD = "DELETE_PAYMENT_METHOD"
+
+//HELP
+export const SET_FAQ_LIST = "SET_FAQ_LIST"
+export const SET_ARTICLES = "SET_ARTICLES"
+export const SET_CONTENT = "SET_CONTENT"
+
+export const SET_ARTWORK_REVIEW_IMAGE = "SET_ARTWORK_REVIEW_IMAGE"
+export const SET_ROTATED_IMAGES = "SET_ROTATED_IMAGES"

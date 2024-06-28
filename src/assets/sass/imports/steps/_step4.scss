@@ -1,0 +1,161 @@
+.order_steps {
+    .recommendations {
+        max-width: 350px;
+        .section_subtitle {
+            margin-bottom: 24px;
+        }
+        ul {
+            @extend %standardList;
+            li {
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                @extend %size16;
+                letter-spacing: 0.02em;
+                color: $description;
+                padding-bottom: 13px;
+                &:before {
+                    display: block;
+                    content: "";
+                    min-width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: $pressColor;
+                    margin-right: 12px;
+                    margin-top: 6px;
+                }
+            }
+        }
+        .more_btn {
+            margin-left: auto;
+            padding: 0;
+            border: none;
+            background: transparent;
+            @extend %size16;
+            letter-spacing: 0.02em;
+            color: $pressColor;
+            font-family: $semibold;
+            @include standardHover;
+        }
+    }
+    .upload_label {
+        display: block;
+        margin-top: -10px;
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        color: $pressColor;
+        @include standardHover;
+        input {
+            @extend %coverLayer;
+            opacity: 0;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .image_preview {
+            display: block;
+            width: 100%;
+            height: 162px;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            &:empty {
+                height: 186px;
+                background: url('/images/no_image.svg') no-repeat;
+                background-size: auto 100%;
+                background-position: center;
+            }
+        }
+        .image_name {
+            display: block;
+            @include overHidden;
+            white-space: nowrap;
+            max-width: 100%;
+            text-overflow: ellipsis;
+            margin-top: 4px;
+            @extend %size16;
+            line-height: 20px;
+            color: $black !important;
+            &:empty {
+                display: none;
+            }
+        }
+        .drag_info {
+            display: block;
+            margin-top: 40px;
+            border-top: 1px solid $disableColor;
+            padding-top: 30px;
+            @extend %textSize20;
+            color: $placeholder !important;
+        }
+        .or_separate {
+            display: block;
+            margin-top: 4px;
+            @extend %textSize20;
+            color: $disableColor !important;
+        }
+        .btn_text {
+            display: block;
+            margin-top: 4px;
+            @extend %subtitle;
+            letter-spacing: 0;
+        }
+    }
+    @include mediaTo($size960) {
+        .recommendations ul li {
+            padding-bottom: 15px;
+            &:before {
+                margin-top: 4px;
+            }
+        }
+
+        .upload_label {
+            .drag_info,
+            .or_separate {
+                display: none;
+            }
+            .btn_text {
+                padding-top: 20px;
+                border-top: 1px solid transparent;
+            }
+            .image_preview {
+                height: 144px;
+                &:empty {
+                    height: 154px;
+                }
+            }
+            .image_name:not(:empty) {
+                margin-bottom: 16px;
+                ~ .btn_text {
+                    border-top-color: $disableColor;
+                }
+            }
+        }
+    }
+}
+
+.touch .upload_label {
+    .drag_info,
+    .or_separate {
+        display: none;
+    }
+    .btn_text {
+        padding-top: 20px;
+        border-top: 1px solid transparent;
+    }
+    .image_preview {
+        height: 144px;
+        &:empty {
+            height: 154px;
+        }
+    }
+    .image_name:not(:empty) {
+        margin-bottom: 16px;
+        ~ .btn_text {
+            border-top-color: $disableColor;
+        }
+    }
+}

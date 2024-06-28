@@ -1,0 +1,205 @@
+.stickers_list {
+    @extend %standardRowList;
+
+    li {
+        @include standardCol(4);
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    @include mediaFrom($size960) {
+        li {
+            &:nth-child(3n+2) .sticker_block {
+                margin: 0 auto;
+            }
+
+            &:nth-child(3n+3) .sticker_block {
+                margin-left: auto;
+            }
+        }
+    }
+
+    @include mediaRange($size960, $size1200) {
+        li {
+            padding-top: 24px;
+            padding-bottom: 16px;
+        }
+    }
+
+    @include mediaTo($size960) {
+        li {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+    }
+
+    @include mediaRange($size576, $size960) {
+        justify-content: space-between;
+
+        li {
+            flex: 0 0 50%;
+            max-width: 347 + 2 * $containerPadding;
+
+        }
+    }
+
+    @include mediaTo($size576) {
+        justify-content: center;
+
+        li {
+            flex: 0 0 100%;
+            max-width: 347 + 2 * $containerPadding;
+
+        }
+    }
+}
+
+.sticker_block {
+    border: 1px solid $grayC5;
+    border-radius: 4px;
+    max-width: 347px;
+    @include overHidden;
+
+    .sticker_image {
+        height: 305px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .action_block {
+        background: $creamyF3;
+        padding: 30px 20px 20px;
+    }
+
+    .qty_block {
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .field_name {
+            @extend %size14;
+            font-family: $semibold;
+            margin-right: 7px;
+        }
+
+        input {
+            flex: 1;
+            max-width: 78px;
+            text-align: center;
+            margin: 0 6px;
+            color: $description;
+            background: $white;
+            @extend %size16;
+            border: 1px solid;
+            border-radius: 3px;
+            padding: 6px;
+            height: 34px;
+        }
+
+        .count_change {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 34px;
+            max-width: 34px;
+            height: 34px;
+            border: 1px solid $grayC5;
+            border-radius: 5px;
+            cursor: pointer;
+            color: $pressColor;
+            @extend %textUnSelect;
+            @include standardHover;
+
+            &:before {
+                @extend %iconElement;
+                display: block;
+                font-size: 140%;
+            }
+
+            &.decrease:before {
+                content: "\e923";
+            }
+
+            &.increase:before {
+                content: "\e924";
+            }
+
+            &:disabled,
+            &.disable,
+            &.inactive {
+                color: $placeholder;
+                border-color: $placeholder;
+                pointer-events: none;
+            }
+        }
+
+        .qty_number {
+            @extend %size22;
+            font-family: $semibold;
+            color: $description;
+            padding-left: 10px;
+        }
+    }
+
+    .prc_block {
+        display: flex;
+        justify-content: flex-start;
+        margin: 0 auto 0;
+        width: 100%;
+        max-width: 220px;
+
+        .field_name {
+            font-size: 140%;
+            line-height: 17px;
+            margin-right: 3px;
+            margin-bottom: 15px;
+            font-family: "sourcesans-pro-semibold";
+        }
+    }
+
+    .add_cart_btn {
+        margin: 18px auto 0;
+        width: 100%;
+        max-width: 220px;
+        background: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: $pressColor;
+        height: 46px;
+        @extend %textSize20;
+        font-family: $semibold;
+        border: 1px solid;
+        border-radius: 4px;
+        @include standardBgHover;
+    }
+
+    @include mediaRange($size960, $size1200) {
+        .sticker_image {
+            height: 280px;
+        }
+    }
+
+    @include mediaRange($size576, $size768) {
+        .sticker_image {
+            height: 280px;
+        }
+    }
+
+    @include mediaTo($size360) {
+        .sticker_image {
+            height: 280px;
+        }
+    }
+}

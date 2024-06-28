@@ -1,0 +1,158 @@
+.custom_select_conf {
+    width: 100%;
+    position: relative;
+
+    .drop_btn {
+        cursor: pointer;
+        position: relative;
+        @include placeholder {
+            color: $description;
+        }
+        input {
+            padding: 0;
+            background: $creamyF3;
+            border: none;
+            white-space: normal;
+            cursor: pointer;
+            border-radius: 3px;
+            padding: 13px 13px 15px;
+            color: $description;
+            @extend %size18;
+        }
+        &:after {
+            display: block;
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            margin-top: -2px;
+            font-size: 0;
+            width: 14px;
+            height: 4px;
+            border-style: solid;
+            border-width: 4px 7px 0;
+            border-top-color: $description;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            pointer-events: none;
+            z-index: 3;
+            @include animStyle(all 0.2s);
+        }
+    }
+    &.opened {
+        .drop_btn {
+            &:after {
+                @include transStyle(rotate(180deg));
+                border-top-color: $pressColor;
+            }
+            input {
+                border-radius: 3px 3px 0 0;
+            }
+        }
+        .drop_block_conf {
+            visibility: visible;
+            // height: auto;
+            // opacity: 1;
+            // display: block;
+        }
+    }
+    .drop_block_conf {
+        // display: none;
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        z-index: 10;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        border-radius: 0 0 3px 3px;
+        background: $creamyF3;
+        color: $description;
+        height: 0;
+        opacity: 0;
+        @include animStyle(opacity 0.2s);
+        &.no_result:after {
+            display: block;
+            content: attr(data-noresult);
+            @extend %size18;
+            padding: 23px 14px 24px;
+            color: $description;
+            text-align: center;
+        }
+        &.home_opened {
+            height: auto;
+            opacity: 1;
+        }
+    }
+    .select_list {
+        @extend %standardList;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        // max-height: 280px;
+        max-height: 255px;
+
+        overflow-y: auto;
+        li {
+            order: 3;
+            width: 100%;
+            cursor: pointer;
+            @extend %size18;
+            padding: 14px 16px;
+            color: inherit;
+            @extend %all300;
+            &:hover,
+            &.selected {
+                background: $pressColor;
+                color: $white;
+            }
+            &.no_width,
+            &.no_height {
+                display: none;
+            }
+            &.equal_width,
+            &.equal_height {
+                order: 2;
+            }
+            &.equal_width.equal_height {
+                order: 1;
+            }
+        }
+    }
+
+    .list_filter {
+        display: flex;
+        padding: 13px 3px;
+        border-top: 1px solid $textColor;
+        border-bottom: 1px solid $textColor;
+        label {
+            flex: 1;
+            margin: 0 10px;
+            position: relative;
+        }
+        .name_block {
+            @extend %size16;
+            display: block;
+            margin-bottom: 4px;
+        }
+        input {
+            @extend %size16;
+            padding: 10px;
+        }
+        .param_unit {
+            @extend %size16;
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            padding: 0 10px;
+            padding: 10px;
+            z-index: 1;
+            pointer-events: none;
+        }
+    }
+    
+}
+
+// .home_opened {
+//     display: block !important;
+//   }

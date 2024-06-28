@@ -1,0 +1,198 @@
+.checkout_page {
+    padding-top: 30px;
+    padding-bottom: 60px;
+
+    .cart_block{
+        display: block;
+        padding: 0 21px 30px;
+        @include mediaTo($size768){
+            padding: 0 15px 30px;
+        }
+        @include mediaTo($size576){
+            padding: 0 0 20px;
+        }
+    }
+
+
+    .card_inner {
+        margin: 0 -15px;
+        display: flex;
+        position: relative;
+    }
+    .card_items {
+        flex: 0 0 70%;
+        max-width: 70%;
+        padding: 0 15px;
+    }
+    .card_summary {
+        flex: 0 0 30%;
+        max-width: 30%;
+        padding: 30px 15px 0;
+        position: relative;
+        .section_subtitle {
+            margin-bottom: 20px;
+        }
+        table {
+            td {
+                vertical-align: middle;
+            }
+            tr {
+                &:not(.total) td {
+                    &:first-child {
+                        padding: 0 25px 5px 0;
+                        @extend %size16;
+                        color: $disableColor;
+                    }
+                    &:last-child {
+                        padding: 0 0 5px;
+                        @extend %textSize24;
+                        letter-spacing: 0;
+                        font-family: $semibold;
+                        white-space: nowrap;
+                    }
+                }
+                &.total td {
+                    position: relative;
+                    &:before {
+                        @include psevdoAbs;
+                        border-top: 1px solid $disableColor;
+                        left: 0;
+                        width: 100%;
+                        top: 15px;
+                    }
+                    &:first-child {
+                        padding: 38px 25px 0 0;
+                        @extend %textSize20;
+                        font-family: $semibold;
+                        
+                    }
+                    &:last-child {
+                        padding: 38px 0 0;
+                        @extend %pageTitle;
+                        font-family: $semibold;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+    .summary_inner {
+        padding: 24px;
+        border: 1px solid;
+        border-radius: 4px;
+        &.fixed {
+            position: fixed;
+            top: 110px;
+            &.to_bottom {
+                position: absolute;
+                left: 15px !important;
+                right: 15px;
+                bottom: 0;
+                top: auto;
+                max-height: none;
+            }
+        }
+        @include mediaRange($size768, $size960) {
+            &.fixed {
+                top: 94px;
+            }
+        }
+    }
+    .checkout_btn {
+        @extend %primary;
+        width: 100%;
+        height: 54px;
+        @extend %size18;
+        letter-spacing: 0.02em;
+        margin-top: 20px;
+    }
+    .checkout_inner {
+        margin-top: 30px;
+        position: relative;
+        .back_btn {
+            margin-bottom: 30px;
+        }
+        @include mediaFrom($size960) {
+            .back_btn {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+    @include mediaTo($size1200) {
+        .summary_inner {
+            padding: 20px;
+        }
+    }
+    @include mediaRange($size960, $size1200) {
+        .card_summary {
+            table,
+            tbody,
+            tr {
+                display: block;
+                width: 100%;
+            }
+            table td {
+                display: block;
+                &:last-child {
+                    padding-left: 0;
+                    text-align: right;
+                    &:before {
+                        display: none !important;
+                    }
+                }
+            }
+            table tr {
+                &:not(.total) td:first-child {
+                    float: left;
+                    padding: 0 !important;
+                }
+                &.total td:last-child {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+
+    @include mediaRange($size768, $size960) {
+        .card_items {
+            flex: none;
+            max-width: 560px;
+            padding-right: 10px;
+        }
+        .card_summary {
+            flex: 1;
+            max-width: 320px;
+            margin-left: auto;
+            padding-left: 10px;
+        }
+        .summary_inner {
+            padding: 20px 16px;
+            table tr.total td:first-child {
+                padding-right: 15px;
+                padding-top: 25px;
+            }
+            table tr:not(.total) td:first-child {
+                padding-right: 15px;
+            }
+        }
+    }
+    @include mediaTo($size768) {
+        .card_inner {
+            flex-wrap: wrap;
+        }
+        .card_items {
+            @include colSize(12);
+        }
+        .card_summary {
+            @include colSize(12);
+            table {
+                width: 100%;
+            }
+        }
+        .summary_inner {
+            padding: 20px 16px;
+        }
+    }
+}

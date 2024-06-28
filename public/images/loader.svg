@@ -1,0 +1,21 @@
+<svg width="183" height="213" viewBox="0 0 183 213" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M182.492 0H0V213H182.492V0Z" fill="#373435"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M61.1012 108.349L21.1076 97.2344C-4.13066 143.233 22.0301 169.889 22.0301 169.889L0 163.826V213H125.09C125.09 213 193.163 172.831 181.046 106.5C168.228 36.389 91.7418 39.1384 91.7418 39.1384L98.7226 24.5938L182.492 49.6001V0H70.8269L35.0279 74.8401L65.0406 91.1421C70.2521 82.1213 80.0114 76.0496 91.191 76.0496C107.852 76.0496 121.359 89.5349 121.359 106.17C121.359 122.805 107.852 136.29 91.191 136.29C75.2639 136.29 62.2195 123.967 61.1012 108.349Z" fill="#FFCC29"/>
+    <g style="transform: translate3d(7px,-13px,0)">
+        <path class="center_ball" d="M83.9079 133.125C91.3431 133.125 97.3704 127.165 97.3704 119.813C97.3704 112.46 91.3431 106.5 83.9079 106.5C76.4728 106.5 70.4454 112.46 70.4454 119.813C70.4454 127.165 76.4728 133.125 83.9079 133.125Z" fill="white"/>
+    </g>
+    <path d="M182.492 157.68L158.066 212.999H182.492V157.68Z" fill="#ED3237"/>
+    <path d="M0 134.036L44.7625 0H0V134.036Z" fill="#0098DA"/>
+    <style rel="css/stylesheet">
+        .center_ball {
+            transform: translateY(-20px);
+            animation: rotateBall 1.5s infinite ease-in-out;
+        }
+        
+        @keyframes rotateBall {
+            0% { transform: rotate(0deg) translateX(13px) rotate(0deg); }
+            90% { transform: rotate(360deg) translateX(13px) rotate(-360deg); }
+            100%  { transform: rotate(360deg) translateX(13px) rotate(-360deg); }
+        }
+    </style>
+</svg>

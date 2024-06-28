@@ -1,0 +1,67 @@
+//font families
+$regular: 'sourcesans-pro';
+$bold: 'sourcesans-pro-bold';
+$semibold: 'sourcesans-pro-semibold';
+$light: 'sourcesans-pro-light';
+
+//media query sizes
+$size320: 320px;
+$size360: 360px;
+$size400: 400px;
+$size480: 480px;
+$size576: 576px;
+$size600: 600px;
+$size640: 640px;
+$size720: 720px;
+$size768: 768px;
+$size960: 960px;
+$size1024: 1024px;
+$size1200: 1200px;
+$size1366: 1366px;
+$size1440: 1440px;
+$size1600: 1600px;
+
+//colors
+$black: #000000;
+$black33: #333333; 
+$gray66: #666666;
+$gray99: #999999;
+$grayE5: #e5e5e5;
+$white: #ffffff;
+$creamyF2:#f2f2f2;
+$error: #ED3237;
+$siteColor: #FFCC29;
+$hoverColor: #ED3237;
+$pressColor: #0098DA;
+$secondColor: $black;
+$textColor: #373435;
+$disableBg: #D9D9D9;
+$disableColor: #9d9d9d;
+$placeholder: #6c6c6c;
+$actionBtnBg: #222021;
+$grayC5: #c5c5c5;
+$selectBg: #E4EFF3;
+$creamyF3: #f3f3f3;
+$description: #5A5A5A;
+$stepBorder: #eeeeee;
+$success: #11C057;
+//social icons original color
+$facebookColor: #3b5998;
+$twitterColor: #00acee;
+$youtubeColor: #c4302b;
+$behanceColor: #053eff;
+$linkedinColor: #0e76a8;
+$okColor: #ed812b;
+$pinterestColor: #c8232c;
+$vkColor: #4c75a3;
+$tiktokColor: #EE1D52;
+$telegramColor: #0088cc;
+$instagramColor: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+
+//sizes
+$containerWidth: 1200px;
+$containerPadding: 16px;
+$colPadding: 12px;
+$rowMargin: -$colPadding;
+
+

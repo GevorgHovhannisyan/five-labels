@@ -1,0 +1,48 @@
+h1.article_title {
+    max-width: 800px;
+    margin: 0 auto 33px;
+    text-align: center;
+    color: inherit;
+    letter-spacing: 0.04em;
+    @extend %size26;
+    font-family: $semibold;
+    @include mediaTo($size960) {
+        margin-bottom: 24px;
+    }
+}
+
+.article_inner {
+    max-width: 756px;
+    margin: 0 auto;
+    @extend %textSize16;
+    color: $description;
+    .video_block {
+        margin-bottom: 30px;
+        &:not(:first-child) {
+            margin-top: 30px;
+        }
+    }
+    > img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 40px 0;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    @include mediaTo($size960) {
+        .video_block {
+            margin-bottom: 24px;
+            &:not(:first-child) {
+                margin-top: 24px;
+            }
+        }
+        > img {
+            margin: 30px 0;
+        }
+    }
+}

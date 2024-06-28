@@ -1,0 +1,17 @@
+@import 'imports/main/variables';
+@import 'imports/main/mixins';
+// @import 'imports/main/fonts';
+@import 'imports/main/general';
+@import 'imports/main/extendsStart';
+
+@import 'imports/main/header';
+@import 'imports/main/footer';
+
+@import 'imports/home/top';
+@import 'imports/home/steps';
+@import 'imports/home/about';
+@import 'imports/home/advantages';
+@import 'imports/home/customSelect';
+@import 'imports/home/partners';
+
+@import 'imports/main/extendsEnd';

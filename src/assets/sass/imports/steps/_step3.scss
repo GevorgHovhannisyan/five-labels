@@ -1,0 +1,333 @@
+.popular_qty {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 263px;
+    margin-right: -21px;
+    margin-top: -14px;
+    @include customScroll(6px, auto, thin, 3px, 3px, transparent, $disableColor);
+    
+    .label {
+        display: block;
+        @extend %size16;
+        font-family: $semibold;
+        margin-bottom: 10px;
+    }
+    label {
+        display: block;
+        margin-right: 21px;
+        position: relative;
+        border-radius: 3px;
+        &:not(:nth-of-type(1)) {
+            margin-top: 15px;
+        }
+        &:nth-last-of-type(n+5),
+        &:nth-last-of-type(n+5) ~ label {
+            margin-right: 15px;
+        }
+        input {
+            @extend %maskedInput;
+            &:checked ~ .radio_btn {
+                border-color: $pressColor;
+                pointer-events: none;
+                font-family: $semibold;
+                * {
+                    color: $pressColor;
+                }
+            }
+        }
+        .radio_btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: $creamyF3;
+            border-radius: inherit;
+            border: 1px solid transparent;
+            cursor: pointer;
+            @include standardHover;
+        }
+        .count_block {
+            color: $black;
+            @extend %textSize20;
+            display: flex;
+            align-items: center;
+            &:after {
+                display: block;
+                content: "";
+                margin: 0 10px;
+                border-top: 1px solid $description;
+                min-width: 12px;
+            }
+        }
+        .price_size {
+            @extend %textSize20;
+            color: $description;
+            display: block;
+        }
+        .unit_price {
+            font-size: 120%;
+            line-height: 15px;
+            margin-left: 6px;
+            display: block;
+        }
+    }
+   
+}
+.custom_qty {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    align-items: flex-end;
+    > * {
+        @include colSize(4);
+        padding: 0 10px;
+    }
+    &:before {
+        display: block;
+        content: attr(data-label);
+        margin: 20px 0 14px;
+        @extend %size16;
+        font-family: $semibold;
+        text-align: center;
+        @include colSize(12);
+    }
+    .label {
+        display: block;
+        @extend %size16;
+        font-family: $semibold;
+        margin-bottom: 6px;
+    }
+    .cost_size .size_block,
+    .calc_btn button {
+        border: 1px solid;
+        border-radius: 3px;
+        display: flex;
+        height: 48px;
+        align-items: center;
+        width: 100%;
+        padding: 0 15px;
+    }
+    .cost_size .size_block {
+        background: $pressColor;
+        color: $white;
+        border-color: transparent;
+        @extend %textSize20;
+    }
+    .calc_btn button {
+        color: $pressColor;
+        @extend %size18;
+        background: transparent;
+        justify-content: center;
+        font-family: $semibold;
+        @include standardHover;
+    }
+}
+
+.output_field {
+    position: relative;
+    label {
+        display: block;
+    }
+    input {
+        width: 100%;
+        background: transparent;
+        color: $textColor;
+        @extend %size16;
+        padding: 0 15px;
+        height: 48px;
+        border-radius: 3px;
+        border: 1px solid;
+    }
+    .error_message {
+        position: absolute;
+        right: 10px;
+        top: 100%;
+    }
+}
+
+.order_steps {
+    .shipping_info {
+        margin-top: 53px;
+        .title_block {
+            @extend %textSize20;
+            font-family: $semibold;
+        }
+    }
+    .shipping_fields {
+        margin: 26px -10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        > * {
+            @include colSize(12);
+            padding: 0 10px;
+        }
+        .label {
+            display: block;
+            @extend %size16;
+            font-family: $semibold;
+            margin-bottom: 6px;
+        }
+    }
+    .shipping_price .price_size {
+        border: 1px solid;
+        border-radius: 3px;
+        display: flex;
+        height: 48px;
+        align-items: center;
+        width: 100%;
+        padding: 0 15px;
+        background: $creamyF3;
+        color: $black;
+        border-color: transparent;
+        @extend %textSize20;
+    }
+    .summary_block {
+        margin-top: 20px;
+        border-top: 1px solid $disableColor;
+        padding-top: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    .price_label {
+        @extend %size14;
+        font-family: $semibold;
+        padding-bottom: 8px;
+    }
+    .price_includes {
+        padding-right: 40px;
+        table {
+            border-spacing: 0;
+            td {
+                padding: 0;
+                vertical-align: top;
+                &:first-child {
+                    @extend %size14;
+                    color: $disableColor;
+                    padding-right: 12px;
+                    padding-top: 3px;
+                }
+                &:last-child {
+                    @extend %size16;
+                    font-family: $semibold;
+                    color: $description;
+                    white-space: nowrap;
+                }
+            }
+            tr:not(:last-child) td {
+                padding-bottom: 4px;
+            }
+        }
+    }
+    .price_total {
+        display: flex;
+        flex-direction: column;
+        .price_label {
+            padding-left: 14px;
+        }
+        .price_size {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            @extend %size30;
+            font-family: $semibold;
+            border-left: 1px solid $disableColor;
+            padding-left: 13px;
+        }
+    }
+}
+
+@include mediaTo($size1200) {
+    .popular_qty {
+        margin-right: -13px;
+        margin-top: -6px;
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+        label {
+            margin-right: 13px;
+            &:nth-last-of-type(n+5),
+            &:nth-last-of-type(n+5) ~ label {
+                margin-right: 9px;
+            }
+        }
+    }
+    .order_steps .summary_block {
+        padding-top: 30px;
+    }
+}
+@include mediaTo($size960) {
+    .popular_qty {
+        margin-top: 0;
+        label .count_block {
+            &:after {
+                margin: 0 8px;
+            }
+            .unit_price {
+                margin-left: 0;
+            }
+        }
+    }
+    .order_steps {
+        .summary_block {
+            padding-top: 20px;
+            justify-content: space-between;
+        }
+        .price_includes {
+            padding-right: 13px;
+            table td:first-child {
+                padding-right: 6px;
+                padding-top: 1px;
+            }
+        }
+    }
+}
+
+@include mediaRange($size576, $size960) {
+    .custom_qty,
+    .order_steps .shipping_fields {
+        > * {
+            @include colSize(12);
+        }
+        .shipping_price,
+        .cost_size {
+            margin-top: 20px;
+        }
+        .calc_btn {
+            margin-top: 28px;
+        }
+    }
+}
+
+@include mediaTo($size768) {
+    .popular_qty label {
+        .radio_btn {
+            flex-wrap: wrap;
+        }
+        .count_block,
+        .price_size {
+            font-size: 160%;
+            line-height: 20px;
+            white-space: nowrap;
+        }
+        .unit_price {
+            margin-left: 0;
+        }
+    } 
+}
+
+@include mediaTo($size480) {
+    .custom_qty,
+    .order_steps .shipping_fields {
+        > * {
+            @include colSize(12);
+        }
+        .shipping_price,
+        .cost_size {
+            margin-top: 20px;
+        }
+        .calc_btn {
+            margin-top: 28px;
+        }
+    }
+}

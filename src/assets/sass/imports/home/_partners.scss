@@ -1,0 +1,249 @@
+.partners_section {
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+.partners_list {
+    margin-top: 26px;
+    background: $creamyF3;
+    @include overHidden;
+    padding: 45px 0 50px;
+}
+
+.partners_slider {
+    @include slider(6);
+    margin: 0 -33px;
+    text-align: center;
+    .slide_block {
+        padding: 0 33px;
+        &:not(.slick-slide) {
+            align-self: center;
+        }
+        &.slick-slide {
+            height: auto;
+            float: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .slick-slide {
+        float: none !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    .partner_block {
+        img {
+            display: inline-block;
+            vertical-align: top;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    }
+    a.partner_block {
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+        font-size: 0;
+        line-height: 0;
+        img {
+            @extend %noBlink;
+            @include animStyle(transform 0.3s);
+        }
+        &:hover img {
+            @include transStyle(scale(1.05));
+        }
+    }
+    .slick-dots {
+        position: absolute;
+        bottom: -32px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 0;
+        button {
+            width: 14px;
+            height: 14px;
+            border: none;
+            background: transparent;
+            padding: 3px;
+            &:before {
+                display: block;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $grayC5;
+                content: "";
+                @include animStyle(background-color 0.3s);
+            }
+            &:hover:before {
+                background: $hoverColor;
+            }
+        }
+        .slick-active button {
+            pointer-events: none;
+            &:before {
+                background: $pressColor;
+            }
+        }
+    }
+
+    // .slick-arrow{
+    //     position: absolute;
+    //     top: 50%;
+    //     margin-top: -29px;
+    //     width: 58px;
+    //     height: 58px;
+    //     color: #ffffff;
+    //     padding: 0;
+    //     z-index: 3;
+    //     background: transparent;
+    //     border-radius: 50%;
+    //     border: none;
+    //     font-size: 0;
+    //     line-height: 0;
+    //     &:before {
+    //         width: 100%;
+    //         height: 100%;
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //         font-size: 2.1rem;
+    //         border: 2px solid transparent;
+    //         border-radius: 50%;
+    //         content: "\e903";
+    //     }
+    // }
+
+    // .slick-prev.slick-arrow{
+    //     left: 43px;
+    // }
+    
+    // .slick-next.slick-arrow{
+    //     right: 43px;
+    // }
+    .slick-arrow {
+        position: absolute;
+        border: none;
+        font-size: 0;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        color: $black;
+        @include standardHover;
+        z-index: 2;
+        padding: 0;
+        top: 50%;
+        margin-top: -20px;
+        &:before {
+            display: block;
+            font-size: 2.5rem;
+            @extend %iconElement;
+            @include mediaTo($size960){
+                font-size: 1.7rem;
+            }
+        }
+        &.slick-disabled {
+            color: $disableColor;
+            pointer-events: none;
+        }
+    }
+    .slick-prev {
+        left: 3px;
+        &:before {
+            content: "\e902"
+        }
+    }
+    .slick-next {
+        right: 3px;
+        &:before {
+            content: "\e903"
+        }
+    }
+
+    @include mediaTo($size960){
+        .slick-prev {
+            left: -10px;
+            &:before {
+                content: "\e902"
+            }
+        }
+        .slick-next {
+            right: -10px;
+            &:before {
+                content: "\e903"
+            }
+        }
+    }
+}
+
+@include mediaRange($size960, $size1200) {
+    .partners_section {
+        padding-top: 45px;
+        padding-bottom: 40px;
+    }
+    .partners_list {
+        margin-top: 20px;
+        padding: 40px 0;
+    }
+    .partners_slider {
+        margin: 0 -20px;
+        .slide_block {
+            padding: 0 20px;
+        }
+        .slick-dots {
+            bottom: -27px;
+        }
+    }
+}
+
+@include mediaRange($size768, $size960) {
+    .partners_slider:not(.slick-slider) > div {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@include mediaRange($size576, $size768) {
+    .partners_slider:not(.slick-slider) > div {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+@include mediaRange($size480, $size576) {
+    .partners_slider:not(.slick-slider) > div {
+        flex: 0 0 33.3%;
+        max-width: 33.3%;
+    }
+}
+
+@include mediaTo($size480) {
+    .partners_slider:not(.slick-slider) > div {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@include mediaTo($size960) {
+    .partners_section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .partners_list {
+        margin-top: 16px;
+        padding: 30px 0;
+    }
+    .partners_slider {
+        margin: 0 -12px;
+        .slide_block {
+            padding: 0 12px;
+        }
+        .slick-dots {
+            bottom: -22px;
+        }
+    }
+}

@@ -1,0 +1,411 @@
+.checkout_form {
+    max-width: 656px;
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 30px;
+    .fields_group {
+        display: flex;
+        margin: 0 -21px;
+        flex-wrap: wrap;
+        .section_subtitle {
+            @include colSize(12);
+            padding: 0 21px 30px;
+        }
+        .field_block {
+            @include colSize(6);
+            padding: 0 21px;
+            &.full_field {
+                @include colSize(12);
+            }
+        }
+        .additional_field {
+            @include colSize(12);
+            padding: 0 21px 30px;
+            text-align: right;
+            white-space: nowrap;
+            margin-top: -10px;
+            .check_btn {
+                justify-content: flex-end;
+            }
+        }
+        ~ .fields_group:before {
+            display: block;
+            content: "";
+            flex: 1;
+            min-width: 60%;
+            margin: 0 21px 30px;
+            border-top: 1px solid $disableColor;
+        }
+    }
+    .fields_inner {
+        @include colSize(12);
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .checkout_actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .checkout_btn {
+            flex: 1;
+            max-width: 220px;
+            margin: 0;
+        }
+        .total_price {
+            display: flex;
+            align-items: center;
+        }
+        .price_label {
+            @extend %size18;
+            font-family: $semibold;
+            margin-right: 30px;
+        }
+        .price_size {
+            white-space: nowrap;
+            @extend %pageTitle;
+            font-family: $semibold;
+            border-left: 1px solid $disableColor;
+            padding-left: 15px;
+        }
+    }
+    .fields_toggle {
+        cursor: pointer;
+        @extend %textUnSelect;
+        @extend %size18;
+        font-family: $bold;
+        display: flex;
+        align-items: center;
+        color: $pressColor;
+        @include standardHover;
+        margin: 0 21px 30px;
+        &:before {
+            @extend %iconElement;
+            display: block;
+            margin-right: 10px;
+            content: "\e924";
+        }
+        &:after {
+            display: block;
+            content: attr(data-new);
+        }
+        ~ .fields_inner {
+            max-height: 0;
+            @include overHidden;
+            @include animStyle(max-height 0.2s);
+        }
+    }
+
+    .available_list {
+        @include colSize(12);
+        select {
+            @extend %maskedInput;
+        }
+        .field_block {
+            margin-bottom: 20px;
+        }
+        .label {
+            display: none;
+        }
+        .v-select {
+            width: 100% !important;
+            position: relative;
+            &:not(.vs--open) .vs__dropdown-toggle {
+                border-radius: 3px;
+            }
+            &.vs--open .vs__open-indicator {
+                color: $pressColor;
+            }
+        }
+        .vs__dropdown-toggle {
+            padding: 0;
+            background: $creamyF3;
+            border: none;
+            white-space: normal;
+            cursor: pointer;
+        }
+        .vs__search, 
+        .vs__search:focus {
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 0;
+            height: 0;
+            min-width: 0;
+            flex: none;
+        }
+        .vs__selected {
+            display: block;
+            width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            position: relative;
+            overflow: hidden;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 0;
+            color: $description;
+            @extend %size18;
+            margin: 0;
+            padding: 13px 0 15px 13px;
+            z-index: 0;
+            &-options {
+                padding: 0;
+                width: 50%;
+            }
+        }
+        .vs__actions {
+            padding: 0 20px;
+        }
+        .vs__open-indicator {
+            font-size: 0;
+            width: 14px;
+            height: 4px;
+            border-style: solid;
+            border-width: 4px 7px 0;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+        .vs__dropdown-menu {
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            top: 100%;
+            z-index: 10;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            max-height: 350px;
+            min-width: 100%;
+            overflow-y: auto;
+            box-shadow: none;
+            border: none;
+            border-top: 1px solid $textColor;
+            border-radius: 0 0 3px 3px;
+            background: $creamyF3;
+            color: $description;
+        }
+        .vs__no-options {
+            @extend %size18;
+            padding: 14px 16px;
+            color: $description;
+            text-align: center;
+        }
+        .vs__dropdown-option {
+            @extend %size18;
+            padding: 14px 16px;
+            color: inherit;
+            @extend %all300;
+            &--highlight,
+            &:hover {
+                background: $pressColor;
+                color: $white;
+            }
+        }
+    }
+
+    .new_fields {
+        .fields_toggle {
+            &:before {
+                display: none;
+            }
+            &:after {
+                content: attr(data-list);
+            }
+        }
+        .fields_inner {
+            max-height: 560px;
+            @include animStyle(max-height 0.5s);
+        }
+        .available_list {
+            pointer-events: none;
+            position: relative;
+            overflow:hidden;
+            max-height: 0;
+            .vs__dropdown-toggle {
+                background: $disableBg;
+            }
+            .vs__selected {
+                color: $disableColor;
+            }
+        }
+    }
+    @include mediaRange($size576, $size768) {
+        padding: 20px;
+        .fields_group {
+            margin: 0 -15px;
+            .section_subtitle,
+            .field_block,
+            .additional_field {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+             ~ .fields_group:before {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+        .checkout_actions .price_label {
+            margin-right: 20px
+        }
+        .fields_toggle {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    }
+    @include mediaTo($size576) {
+        padding: 20px 16px;
+        .fields_group {
+            margin: 0;
+            .section_subtitle,
+            .field_block,
+            .additional_field {
+                padding-left: 0;
+                padding-right: 0;
+            }
+             ~ .fields_group:before {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .field_block {
+                @include colSize(12);
+            }
+        }
+        .fields_toggle {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .checkout_actions {
+            flex-wrap: wrap;
+            .total_price {
+                @include colSize(12);
+                justify-content: flex-end;
+            }
+            .price_label {
+                margin-right: 20px
+            }
+            .checkout_btn {
+                margin-top: 20px;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.checkout_page {
+    .fields_inner {
+
+        .v-select {
+          width: 100% !important;
+          position: relative;
+          &:not(.vs--open) .vs__dropdown-toggle {
+            border-radius: 4px;
+          }
+          &.vs--open .vs__open-indicator {
+            color: $pressColor;
+          }
+        }
+        .vs__dropdown-toggle {
+          padding: 0;
+          background: none;
+          border: 1px solid;
+          white-space: normal;
+          cursor: pointer;
+          min-height: 48px;
+        }
+      
+        .vs__search,
+        .vs__search:focus {
+          float: left;
+          opacity: 0;
+          width: 0;
+          min-width: 0;
+          padding: 0;
+          margin: 0;
+          height: 0;
+          max-width: 0;
+          border: none;
+        }
+        .vs__selected {
+          display: flex;
+          align-items: center;
+          background-color: transparent;
+          border: none;
+          border-radius: 0;
+          color: $black;
+          @extend %size18;
+          margin: 0;
+          padding: 11px 16px;
+          z-index: 0;
+          &-options {
+            padding: 0;
+          }
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          position: relative;
+        }
+        .vs__actions {
+          padding: 0 20px;
+        }
+        .vs__open-indicator {
+          font-size: 0.6rem;
+          &:before {
+            font-weight: 700;
+          }
+        }
+        .vs__dropdown-menu {
+          display: block;
+          box-sizing: border-box;
+          position: absolute;
+          top: 100%;
+          z-index: 10;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          max-height: 350px;
+          min-width: 100%;
+          overflow-y: auto;
+          box-shadow: none;
+          border: none;
+          border-top: 1px solid $textColor;
+          border-radius: 0 0 4px 4px;
+          background: $selectBg;
+          color: $black;
+      
+          .vs__dropdown-option.vs__dropdown-option--disabled {
+              opacity: 0.5;
+          }
+        }
+      
+        .v-select.vs--disabled {
+          opacity: 0.5;
+          .vs__dropdown-toggle {
+            cursor: no-drop;
+          }
+        } 
+        .vs__no-options {
+          @extend %size18;
+          padding: 20px 20px 15px;
+          color: $description;
+          text-align: center;
+        }
+        .vs__dropdown-option {
+          @extend %size18;
+          padding: 20px 20px 15px;
+          color: inherit;
+          @extend %all300;
+          &--highlight,
+          &:hover {
+            background: $pressColor;
+            color: $white;
+          }
+        }
+    }
+
+    .state_block {
+        overflow: visible !important;
+    }
+  
+  }

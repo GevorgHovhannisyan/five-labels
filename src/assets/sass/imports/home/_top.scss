@@ -1,0 +1,268 @@
+.homepage {
+  .main_screen {
+    padding-top: 45px;
+    padding-bottom: 70px;
+    .images_block {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+    .slogan_image {
+      flex: 0 0 42%;
+      max-width: 42%;
+      order: 2;
+      margin-left: -17px;
+      padding-top: 20px;
+      padding-bottom: 115px;
+      position: relative;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      &:before {
+        @include psevdoAbs;
+        right: 12%;
+        bottom: 12px;
+        height: 131px;
+        width: 26.8%;
+        background: url("~@/assets/images/arrow.svg") no-repeat;
+        background-size: auto 100%;
+        background-position: top center;
+      }
+    }
+    .collage {
+      flex: 1;
+      margin-left: -40px;
+      margin-right: -20px;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .create_form {
+    margin: 0 -2px;
+    display: flex;
+    align-items: flex-end;
+  }
+    .field_block {
+        flex: 1;
+        padding: 0 2px;
+        margin-bottom: 0;
+    }
+    .btn_block {
+        flex: 1;
+        padding: 0 2px;
+        button {
+            @extend %primary;
+            @extend %size26;
+            width: 100%;
+            height: 70px;
+        }
+    }
+  // .field_block {
+  //   flex: 0 0 20%;
+  //   max-width: 20%;
+  //   padding: 0 2px;
+  //   margin-bottom: 0;
+  // }
+  // .btn_block {
+  //   flex: 0 0 20%;
+  //   max-width: 20%;
+  //   padding: 0 2px;
+  //   button {
+  //     @extend %primary;
+  //     @extend %size26;
+  //     width: 100%;
+  //     height: 70px;
+  //   }
+  // }
+  .label {
+    display: block;
+    font-family: $semibold;
+    color: $pressColor;
+    @extend %size16;
+    margin-bottom: 6px;
+    @include mediaTo($size960) {
+      margin-bottom: 4px;
+    }
+  }
+  select {
+    @extend %maskedInput;
+  }
+  .v-select {
+    width: 100% !important;
+    position: relative;
+    &:not(.vs--open) .vs__dropdown-toggle {
+      border-radius: 4px;
+    }
+    &.vs--open .vs__open-indicator {
+      color: $pressColor;
+    }
+  }
+  .vs__dropdown-toggle {
+    padding: 0;
+    background: $selectBg;
+    border: none;
+    white-space: normal;
+    cursor: pointer;
+    min-height: 70px;
+  }
+
+  .vs__search,
+  .vs__search:focus {
+    float: left;
+    opacity: 0;
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    max-width: 0;
+    border: none;
+  }
+  .vs__selected {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: $black;
+    @extend %size18;
+    margin: 0;
+    padding: 23px 14px 24px;
+    z-index: 0;
+    &-options {
+      padding: 0;
+    }
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+  }
+  .vs__actions {
+    padding: 0 20px;
+  }
+  .vs__open-indicator {
+    font-size: 0.6rem;
+    &:before {
+      font-weight: 700;
+    }
+  }
+  .vs__dropdown-menu {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 350px;
+    min-width: 100%;
+    overflow-y: auto;
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid $textColor;
+    border-radius: 0 0 4px 4px;
+    background: $selectBg;
+    color: $black;
+  }
+  .vs__no-options {
+    @extend %size18;
+    padding: 23px 14px 24px;
+    color: $description;
+    text-align: center;
+  }
+  .vs__dropdown-option {
+    @extend %size18;
+    padding: 23px 14px 24px;
+    color: inherit;
+    @extend %all300;
+    &--highlight,
+    &:hover {
+      background: $pressColor;
+      color: $white;
+    }
+  }
+  @include mediaTo($size1200) {
+    .create_form {
+      flex-wrap: wrap;
+    }
+  }
+  @include mediaTo($size960) {
+    .vs__selected,
+    .vs__dropdown-option {
+      padding: 15px 12px;
+    }
+    .vs__dropdown-toggle {
+      min-height: 50px;
+    }
+    .btn_block button {
+      height: 50px;
+    }
+    .main_screen .slogan_image {
+      padding-top: 0;
+    }
+  }
+
+  @include mediaRange($size576, $size1200) {
+    .main_screen {
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+    .field_block {
+      @include colSize(6);
+      margin-bottom: 30px;
+    }
+  }
+
+  @include mediaRange($size576, $size960) {
+    .main_screen {
+      .slogan_image {
+        @include colSize(6);
+        padding-bottom: 85px;
+        &:before {
+          height: 95px;
+        }
+      }
+      .collage {
+        margin-left: -20px;
+        margin-right: -40px;
+      }
+    }
+  }
+  @include mediaTo($size576) {
+    .main_screen {
+      padding-top: 30px;
+      padding-bottom: 40px;
+      .images_block {
+        flex-wrap: wrap;
+      }
+      .slogan_image {
+        @include colSize(12);
+        padding-bottom: 25px;
+        margin: 0;
+        &:before {
+          display: none;
+        }
+      }
+      .collage {
+        margin-left: 6 - $containerPadding;
+        margin-right: 6 - $containerPadding;
+        padding-bottom: 20px;
+        order: 3;
+        min-width: 50%;
+      }
+    }
+    .field_block {
+      @include colSize(12);
+      margin-bottom: 20px;
+    }
+    .btn_block {
+      padding-top: 10px;
+    }
+  }
+}

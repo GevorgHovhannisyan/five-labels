@@ -1,0 +1,180 @@
+.address_block {
+    border: 1px solid $textColor;
+    border-radius: 4px;
+    padding: 24px;
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+
+    &.default {
+        border: 3px solid $pressColor;
+        padding: 22px;
+        // &:before {
+        //     position: absolute;
+        //     left: -3px;
+        //     top: -3px;
+        //     @extend %iconElement;
+        //     font-size: 2rem;
+        //     content: "\e907";
+        //     color: $pressColor;
+        //     pointer-events: none;
+        // }
+    }
+
+    .address_info {
+        @extend %textSize20;
+        font-family: $semibold;
+        color: $black;
+        letter-spacing: 0.02em;
+        flex: 1;
+        max-width: 60%;
+        padding-right: 20px;
+        margin-right: auto;
+    }
+
+    .address_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 20px;
+        white-space: nowrap;
+
+        .info_toggle {
+            display: none;
+        }
+
+        * {
+            border: none;
+            padding: 0;
+            background: transparent;
+            position: relative;
+            @extend %size16;
+            display: flex;
+            align-items: center;
+
+            &:before {
+                display: block;
+                margin-right: 6px;
+            }
+
+            &:not(:last-child) {
+                margin-right: 31px;
+
+                &:after {
+                    display: block;
+                    position: absolute;
+                    right: -16px;
+                    top: 50%;
+                    margin-top: -10px;
+                    content: "";
+                    height: 20px;
+                    border-left: 1px solid $disableColor;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        .choose_btn {
+            @include standardHover;
+            color: $gray66;
+            &._checked {
+                color: #11C057;
+                cursor: default;
+
+                &:hover {
+                    color: #11C057 !important;
+
+                }
+
+                &:before {
+                    content: "";
+                    width: 11px;
+                    height: 5px;
+                    border-style: solid;
+                    border-width: 0 0 1px 1px;
+                    @include transStyle(rotate(-45deg));
+                    order: 2;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .edit_btn {
+            color: $pressColor;
+            @include standardHover;
+            position: relative;
+
+            &:before {
+                font-size: 1.2rem;
+            }
+        }
+
+        .popup_btn {
+            color: $error;
+            @include siteColorHover;
+            order: 2;
+
+            &:before {
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    @include mediaTo($size1200) {
+        padding: 20px;
+
+        &.default {
+            border-width: 2px;
+            padding: 19px;
+        }
+    }
+
+    @include mediaTo($size960) {
+        flex-wrap: wrap;
+
+        .address_info {
+            @include colSize(12);
+            padding-right: 0;
+        }
+
+        .address_actions {
+            margin-left: auto;
+            margin-top: 12px;
+        }
+    }
+
+    @include mediaTo($size768) {
+        padding: 15px;
+        margin-bottom: 20px;
+
+        &.default {
+            padding: 14px;
+        }
+
+        .address_actions *:not(:last-child) {
+            margin-right: 21px;
+
+            &:after {
+                right: -11px;
+            }
+        }
+    }
+}
+
+.new_address_link {
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    color: $pressColor;
+    @include standardHover;
+    font-family: $bold;
+    @extend %size18;
+    letter-spacing: 0.08em;
+
+    &:before {
+        display: block;
+        font-size: 1.4rem;
+        margin-right: 6px;
+    }
+}

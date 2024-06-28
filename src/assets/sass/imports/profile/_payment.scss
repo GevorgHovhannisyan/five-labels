@@ -1,0 +1,228 @@
+.methods_list {
+    .card_block {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 22px 17px 20px;
+        background: $creamyF3;
+        border: 1px solid $grayC5;
+        border-radius: 7px;
+    }
+
+    .card_logo {
+        min-height: 93px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        img {
+            max-width: 137px;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    @extend %standardList;
+    margin: 0 -15px;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        padding: 0 15px 30px;
+    }
+
+    .method_block {
+        width: 250px;
+        height: 157px;
+        border-radius: 7px;
+        position: relative;
+
+        &:hover .method_actions {
+            opacity: 1;
+        }
+    }
+
+    .method_actions {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        input:checked+.select_btn {
+            font-size: 0;
+            text-decoration: none;
+            color: $success;
+            display: flex;
+            align-items: center;
+
+            &:before {
+                display: block;
+                content: "";
+                width: 12px;
+                height: 6px;
+                border-style: solid;
+                border-width: 0 0 2px 2px;
+                @include torigin(center);
+                @include transStyle(rotate(-45deg));
+                margin-right: 5px;
+                margin-top: -3px;
+            }
+
+            &:after {
+                content: attr(data-checked);
+                font-size: 1.4rem;
+                font-family: $semibold;
+
+            }
+        }
+
+        .checkbox_label {
+            &:first-child:last-child {
+                margin: 10px;
+            }
+        }
+
+        .select_btn {
+            @extend %textUnSelect;
+            // color: $white;
+            color: $textColor;
+            @extend %size14;
+            cursor: pointer;
+            @include standardHover;
+            font-family: $semibold;
+            text-decoration: underline;
+        }
+
+        .popup_btn {
+            font-size: 150%;
+            border: none;
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            padding: 0;
+            color: $error;
+            @include opacityHover;
+
+            &:before {
+                display: block;
+            }
+        }
+    }
+
+    .card_block {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 22px 17px 20px;
+        border-radius: inherit;
+
+        &.visa {
+            background: linear-gradient(88.73deg, #FFCC29 1.01%, #F3D67A 66.96%)
+        }
+
+        &.mastercard {
+            background: linear-gradient(99.75deg, #0098DA 20.69%, rgba(123, 191, 230, 0.74) 91.26%)
+        }
+
+        &.unionpay {
+            background: linear-gradient(88.73deg, #12ff00 1.01%, #a9dfba 66.96%);
+
+            .card_number {
+                color: white;
+            }
+        }
+
+        &.jcb {
+            background: linear-gradient(99.75deg, #0098DA 20.69%, rgba(123, 191, 230, 0.74) 91.26%)
+        }
+
+
+        &.diners {
+            background: linear-gradient(88.73deg, #ff0000 1.01%, #ff9f9f 66.96%);
+
+            .card_number {
+                color: white;
+            }
+        }
+
+        &.discover {
+            background: linear-gradient(88.73deg, #3a3a3a 1.01%, #838383 66.96%);
+
+            .card_number {
+                color: white;
+            }
+        }
+
+        &.amex {
+            background: linear-gradient(88.73deg, #3a3a3a 1.01%, #838383 66.96%);
+
+            .card_number {
+                color: white;
+            }
+        }
+    }
+
+    .card_logo {
+        min-height: 93px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .card_number {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: $textColor;
+        font-size: 180%;
+        // font-family: $bold;
+        letter-spacing: 2px;
+
+        :not(:last-child) {
+            line-height: 0;
+            display: block;
+            height: 1px;
+            margin-top: 8px;
+        }
+    }
+
+    .add_cart_btn {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        @extend %centerBlock;
+        background: $creamyF3;
+        border-radius: 7px;
+        @extend %size18;
+        font-family: $bold;
+        letter-spacing: 0.08em;
+        color: inherit;
+        border: none;
+        padding: 10px;
+        @include standardHover;
+
+        &:before {
+            display: block;
+            margin-right: 5px;
+        }
+    }
+}
+
+.touch .method_actions {
+    opacity: 1;
+}

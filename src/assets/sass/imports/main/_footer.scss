@@ -1,0 +1,242 @@
+.footer {
+    opacity: 0;
+    position: relative;
+    @extend %opacity300;
+    background-color: $siteColor;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: top left;
+
+    .page_container {
+        display: flex;
+        min-height: 235px;
+    }
+
+    .contacts_section {
+        align-self: center;
+        margin-left: auto;
+        padding: 24px 0;
+    }
+
+    .cart_block {
+        margin-top: 18px;
+        padding-top: 18px;
+        display: block;
+        border-top: 1px solid;
+
+        @include mediaRange($size960, $size1024+70) {
+            text-align: end;
+        }
+    }
+
+    .socials_list {
+        @extend %standardList;
+        display: flex;
+        border-bottom: 1px solid;
+
+        li {
+            margin-right: 17px;
+            padding-bottom: 14px;
+        }
+
+        a {
+            display: block;
+            border-radius: 50%;
+            color: inherit;
+            font-size: 0;
+            line-height: 0;
+            @include standardHover;
+
+            &:before {
+                display: block;
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .contact_block {
+        @extend %size16;
+        font-family: $semibold;
+        margin-top: 18px;
+        display: flex;
+        align-items: center;
+
+        &:before {
+            display: block;
+            font-size: 2.2rem;
+            margin-right: 9px;
+        }
+
+        a {
+            display: flex;
+            color: inherit;
+            @include standardHover;
+        }
+
+        >*:not(:first-child) {
+            margin-left: 21px;
+            position: relative;
+
+            &:before {
+                @include psevdoAbs;
+                left: -10px;
+                top: 50%;
+                margin-top: -8px;
+                border-left: 1px solid $textColor;
+                height: 16px;
+                pointer-events: none;
+            }
+        }
+    }
+
+    &_bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 720px;
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+        color: $white;
+        padding: 7px 0 7px 153px;
+        align-items: center;
+    }
+
+    .copyrights {
+        display: flex;
+        align-items: center;
+
+        .privacy_security {
+            display: flex;
+            align-items: center;
+            color: $white;
+
+            div {
+                margin-left: 10px;
+
+            }
+
+            a {
+                color: inherit;
+                @include standardHover;
+            }
+
+            .privacy__policy {
+                border-left: 1px solid white;
+                padding-left: 5px;
+            }
+        }
+
+        @extend %size16;
+        padding-right: 20px;
+    }
+
+    .developer {
+        @extend %size14;
+        color: $grayC5;
+        white-space: nowrap;
+
+        a {
+            display: inline-block;
+            vertical-align: top;
+            color: $white;
+            font-size: 0;
+            line-height: 0;
+            margin-left: 10px;
+            @include standardHover;
+
+            &:before {
+                display: block;
+                font-size: 1.4rem;
+                line-height: 17px;
+            }
+        }
+    }
+
+    @include mediaTo($size1200) {
+        .contacts_section {
+            align-self: flex-start;
+        }
+
+        &_bottom {
+            padding-left: $containerPadding;
+        }
+    }
+
+    @include mediaTo($size960) {
+        background-size: 160% auto;
+        background-position: left bottom 4%;
+
+        .page_container {
+            flex-wrap: wrap;
+            min-height: 0;
+        }
+
+        .contacts_section {
+            margin: 0 auto 22%;
+            max-width: 290px;
+            flex: 0 0 100%;
+        }
+
+        .socials_list {
+            justify-content: center;
+
+            li {
+                margin-right: 14px;
+                padding-bottom: 17px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            a:before {
+                font-size: 2.6rem;
+            }
+        }
+
+        .developer {
+            a:before {
+                line-height: 15px;
+            }
+        }
+
+        &_bottom {
+            position: relative;
+            top: auto;
+            left: auto;
+            @include colSize(12);
+            padding: 14px 0;
+            z-index: 1;
+
+            &:before {
+                @include psevdoAbs;
+                left: -$containerPadding;
+                right: -$containerPadding;
+                top: 0;
+                height: 100%;
+                background: $textColor;
+                z-index: -1;
+            }
+
+        }
+    }
+
+    @include mediaTo($size768) {
+        background-size: 170% auto;
+        background-position: left bottom 7%;
+
+        .contacts_section {
+            margin: 0 auto 25%;
+        }
+    }
+
+    @include mediaTo($size576) {
+        background-size: 190% auto;
+        background-position: left bottom 10%;
+
+        .contacts_section {
+            margin: 0 auto 27%;
+        }
+    }
+}

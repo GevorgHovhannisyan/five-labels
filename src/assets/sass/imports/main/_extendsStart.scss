@@ -1,0 +1,413 @@
+%standardList {
+	@include standardList();
+}
+
+%standardRowList {
+	@include standardRowList();
+}
+
+%coverLayer {
+	@include coverLayer();
+}
+
+%fixedCover {
+	@include fixCoverLayer;
+}
+
+%verticalRotate {
+	@include transStyle(scaleX(-1));
+}
+
+%horizontalRotate {
+	@include transStyle(scaleY(-1));
+}
+
+%centeredImage {
+	> img {
+		@extend %coverLayer;
+		object-fit: cover;
+	}
+}
+
+%coverVideo {
+	iframe {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+
+%square {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 100%;
+	}
+}
+
+%almostSquare {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 75%;
+	}
+}
+
+%lessWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 62.5%;
+	}
+}
+
+%standardWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 56.25%;
+	}
+}
+
+%halfWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 50%;
+	}
+}
+
+%superWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 25%;
+	}
+}
+
+%standardNarrow {
+	@include overHidden();
+	@extend %centeredImage;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 177.78%;
+	}
+}
+
+%lessNarrow {
+	@include overHidden();
+	@extend %centeredImage;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 133.33%;
+	}
+}
+
+%iconElement {
+	&:before,
+	&:after {
+		font-family: 'icon' !important;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+%noBlink {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+%centerBlock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%linkTypeBtn {
+	border: none;
+	padding: 0;
+	background: transparent;
+}
+
+%standardText {
+	font-size: 140%;
+	line-height: 20px;
+}
+
+.standard_text {
+	@extend %standardText;
+}
+
+%pageTitle {
+	font-family: $bold;
+	margin: 0;
+	line-height: 1.25em;
+	color: inherit;
+	.count {
+		color: $disableColor;
+	}
+	@include mediaFrom($size960) {
+		font-size: 400%;
+	}
+	@include mediaRange($size576, $size960) {
+		font-size: 320%;
+	}
+	@include mediaTo($size576) {
+		font-size: 240%;
+	}
+}
+
+%sectionTitle {
+	font-family: $semibold;
+	margin: 0;
+	line-height: 1.25em;
+	letter-spacing: 0.02em;
+	color: inherit;
+	@include mediaFrom($size960) {
+		font-size: 280%;
+	}
+	@include mediaRange($size576, $size960) {
+		font-size: 240%;
+	}
+	@include mediaTo($size576) {
+		font-size: 220%;
+	}
+}
+
+%blockTitle {
+	font-family: $semibold;
+	margin: 0;
+	line-height: 23px;
+	letter-spacing: 0.04em;
+	color: inherit;
+	@include mediaFrom($size960) {
+		font-size: 200%;
+	}
+	@include mediaRange($size576, $size960) {
+		font-size: 180%;
+	}
+	@include mediaTo($size576) {
+		font-size: 160%;
+	}
+}
+
+%subtitle {
+	margin: 0;
+	color: inherit;
+	font-family: $semibold;
+	letter-spacing: 0.02em;
+	@include mediaFrom($size960) {
+		font-size: 280%;
+		line-height: 33px;
+	}
+	@include mediaTo($size960) {
+		font-size: 200%;
+		line-height: 25px;
+	}
+}
+
+%size30 {
+	@include mediaFrom($size960) {
+		font-size: 300%;
+		line-height: 38px;
+	}
+	@include mediaTo($size960) {
+		font-size: 240%;
+		line-height: 30px;
+	}
+}
+
+%size26 {
+	@include mediaFrom($size960) {
+		font-size: 260%;
+		line-height: 33px;
+	}
+	@include mediaTo($size960) {
+		font-size: 200%;
+		line-height: 25px;
+	}
+}
+
+%textSize24 {
+	letter-spacing: 0.02em;
+	@include mediaFrom($size1200) {
+		font-size: 240%;
+		line-height: 30px;
+	}
+	@include mediaRange($size960, $size1200) {
+		font-size: 200%;
+		line-height: 25px;
+	}
+	@include mediaRange($size576, $size960) {
+		font-size: 160%;
+		line-height: 20px;
+	}
+	@include mediaTo($size576) {
+		font-size: 140%;
+		line-height: 17px;
+	}
+}
+
+%size22 {
+	@include mediaFrom($size960) {
+		font-size: 220%;
+		line-height: 27px;
+	}
+	@include mediaTo($size960) {
+		font-size: 180%;
+		line-height: 23px;
+	}
+	
+}
+
+
+
+%textSize20 {
+	@include mediaFrom($size960) {
+		font-size: 200%;
+		line-height: 25px;
+	}
+	@include mediaTo($size960) {
+		font-size: 180%;
+		line-height: 22px;
+	}
+}
+
+%size18 {
+	@include mediaFrom($size960) {
+		font-size: 180%;
+		line-height: 23px;
+	}
+	@include mediaTo($size960) {
+		font-size: 160%;
+		line-height: 20px;
+	}
+}
+
+%size16 {
+	@include mediaFrom($size960) {
+		font-size: 160%;
+		line-height: 20px;
+	}
+	@include mediaTo($size960) {
+		font-size: 140%;
+		line-height: 17px;
+	}
+}
+
+%textSize16 {
+	line-height: 1.5em;
+	letter-spacing: 0.02em;
+	@include mediaFrom($size960) {
+		font-size: 160%;
+	}
+	@include mediaTo($size960) {
+		font-size: 140%;
+	}
+}
+
+%size14 {
+	@include mediaFrom($size960) {
+		font-size: 140%;
+		line-height: 17px;
+	}
+	@include mediaTo($size960) {
+		font-size: 120%;
+		line-height: 15px;
+	}
+}
+
+%primary {
+	color: $textColor;
+	background: $siteColor;
+	@include standardBgHover;
+	border-radius: 4px;
+	border: none !important;
+	font-family: $semibold;
+	letter-spacing: 0.04em;
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	&:disabled,
+	&.disable,
+	&.inactive {
+		background: $disableBg;
+		color: $placeholder;
+		pointer-events: none;
+	}
+}
+
+%secondary {
+	color: $textColor;
+	background: transparent;
+	@include standardHover;
+	border-radius: 4px;
+	border: 1px solid;
+	font-family: $semibold;
+	letter-spacing: 0.04em;
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	&:disabled,
+	&.disable,
+	&.inactive {
+		color: $placeholder;
+		pointer-events: none;
+	}
+}
+
+%mixed {
+	color: $textColor;
+	background: $creamyF3;
+	@include standardHover;
+	border-radius: 4px;
+	border: none !important;
+	font-family: $semibold;
+	letter-spacing: 0.04em;
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	&:disabled,
+	&.disable,
+	&.inactive {
+		background: $disableBg;
+		color: $placeholder;
+		pointer-events: none;
+	}
+}

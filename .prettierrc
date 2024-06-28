@@ -1,0 +1,7 @@
+{
+    "trailingComma": "none",
+    "semi": false,
+    "singleQuote": false,
+    "endOfLine": "lf",
+    "editor.formatOnSave": false
+}

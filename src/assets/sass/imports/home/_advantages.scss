@@ -1,0 +1,96 @@
+.advantages {
+    background: $siteColor;
+    padding: 60px 0;
+    @include overHidden;
+    &_list {
+        @extend %standardList;
+        display: flex;
+        margin: 0 -40px;
+        li {
+            @include colSize(3);
+            padding: 0 40px;
+        }
+    }
+    .icon_block {
+        text-align: center;
+        height: 150px;
+        img {
+            display: inline-block;
+            vertical-align: top;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+    .title_block {
+        margin-top: 30px;
+        @extend %size22;
+        font-family: $bold;
+    }
+    .text_block {
+        margin-top: 10px;
+        @extend %size16;
+        letter-spacing: 0.04em;
+    }
+
+    .advantages_list {
+        .text_block {
+            white-space: break-spaces;
+        }
+    }
+
+    @include mediaRange($size960, $size1200) {
+        padding: 40px 0;
+        &_list {
+            margin: 0 -20px;
+        }
+        li {
+            padding: 0 20px;
+        }
+        .icon_block {
+            height: 120px;
+        }
+    }
+    @include mediaTo($size960) {
+        padding: 10px 0;
+        &_list {
+            flex-wrap: wrap;
+            text-align: center;
+            margin: 0 -15px;
+        }
+        li {
+            max-width: 360px;
+            padding: 20px 15px;
+            margin: 0 auto;
+        }
+        .title_block {
+            margin-top: 20px;
+        }
+    }
+    @include mediaRange($size576, $size960) {
+        &_list {
+            flex-wrap: wrap;
+            text-align: center;
+            
+        }
+        li {
+            flex: 0 0 50%;
+            max-width: 360px;
+            padding: 20px 15px;
+            margin: 0 auto;
+        }
+        .icon_block {
+            height: 100px;
+        }
+    }
+    @include mediaTo($size576) {
+        li {
+            flex: 0 0 100%;
+        }
+        .icon_block {
+            height: auto;
+            img {
+                max-height: 96px;
+            }
+        }
+    }
+}

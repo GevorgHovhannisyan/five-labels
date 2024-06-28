@@ -1,0 +1,153 @@
+.order_steps {
+    .right_col {
+        .fields_group {
+            margin: 0 -14px;
+            display: flex;
+            flex-wrap: wrap;
+            .field_block {
+                padding: 0 14px;
+                @include colSize(6);
+            }
+            .label {
+                @extend %size16;
+                font-family: $semibold;
+                margin-bottom: 6px;
+                display: block;
+            }
+            .compare_btn {
+                position: absolute;
+                top: 100%;
+                right: 14px;
+                color: $pressColor;
+                margin-top: 4px;
+                @extend %textUnSelect;
+                cursor: pointer;
+                @include standardHover;
+                font-size: 120%;
+                line-height: 15px;
+            }
+        }
+
+    }
+    select {
+        @extend %maskedInput;
+    }
+    .v-select {
+        width: 100% !important;
+        position: relative;
+        &:not(.vs--open) .vs__dropdown-toggle {
+            border-radius: 3px;
+        }
+        &.vs--open .vs__open-indicator {
+            color: $pressColor;
+        }
+    }
+    .vs__dropdown-toggle {
+        padding: 0;
+        background: $creamyF3;
+        border: none;
+        white-space: normal;
+        cursor: pointer;
+    }
+    .vs__search, 
+    .vs__search:focus {
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 0;
+        height: 0;
+        min-width: 0;
+        flex: none;
+    }
+    .vs__selected {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: relative !important;
+        overflow: hidden;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0;
+        opacity: 1 !important;
+        color: $description;
+        @extend %size16;
+        margin: 0;
+        padding: 13px 0 15px 13px;
+        z-index: 0;
+        &-options {
+            padding: 0;
+            width: 50%;
+        }
+    }
+    .vs__actions {
+        padding: 0 20px;
+    }
+    .vs__open-indicator {
+        font-size: 0;
+        width: 14px;
+        height: 4px;
+        border-style: solid;
+        border-width: 4px 7px 0;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+    .vs__dropdown-menu {
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        top: 100%;
+        z-index: 10;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 350px;
+        min-width: 100%;
+        overflow-y: auto;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid $textColor;
+        border-radius: 0 0 3px 3px;
+        background: $creamyF3;
+        color: $description;
+    }
+    .vs__no-options {
+        @extend %size18;
+        padding: 14px 16px;
+        color: $description;
+        text-align: center;
+    }
+    .vs__dropdown-option {
+        @extend %size18;
+        padding: 14px 16px;
+        color: inherit;
+        @extend %all300;
+        &--highlight,
+        &:hover {
+            background: $pressColor;
+            color: $white;
+        }
+    }
+    @include mediaTo($size1200) {
+        .right_col .fields_group {
+            margin: 0 -12px;
+            .field_block {
+                padding: 0 12px;
+            }
+        }
+    }
+    @include mediaRange($size576, $size960) {
+        .right_col .fields_group {
+            .field_block {
+                @include colSize(12);
+            }
+        }
+    }
+    @include mediaTo($size480) {
+        .right_col .fields_group {
+            .field_block {
+                @include colSize(12);
+            }
+        }
+    }
+}

@@ -1,0 +1,164 @@
+.custom_select {
+    width: 100%;
+    position: relative;
+
+    .drop_btn_home {
+        cursor: pointer;
+        position: relative;
+        @include placeholder {
+            color: $black;
+        }
+        input {
+            padding: 0;
+            background: $selectBg;
+            border: none;
+            white-space: normal;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 23px 14px 24px;
+            color: $black;
+            @extend %size18;
+        }
+        &:after {
+            @extend %iconElement;
+            font-size: 0.6rem;
+            font-weight: 700;
+            content: "\e901";
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            @extend %noBlink;
+            @include torigin(center);
+            @include animStyle(all 0.2s);
+        }
+    }
+    &.opened  {
+        .drop_btn {
+            &:after {
+                @include transStyle(rotate(180deg));
+                color: $pressColor;
+            }
+            input {
+                border-radius: 4px 4px 0 0;
+            }
+        }
+        .drop_block_home {
+            visibility: visible;
+
+        }
+    }
+    .drop_block_home {
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        z-index: 10;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        border-radius: 0 0 4px 4px;
+        background: $selectBg;
+        color: $black;
+        height: 0;
+        opacity: 0;
+        @include animStyle(opacity 0.2s);
+        &.no_result:after {
+            display: block;
+            content: attr(data-noresult);
+            @extend %size18;
+            padding: 23px 14px 24px;
+            color: $description;
+            text-align: center;
+        }
+        &.home_opened {
+            height: auto;
+            opacity: 1;
+        }
+    }
+    .select_list {
+        @extend %standardList;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        // max-height: 280px;
+        max-height: 255px;
+        overflow-y: auto;
+        li {
+            order: 3;
+            width: 100%;
+            cursor: pointer;
+            @extend %size18;
+            padding: 23px 14px 24px;
+            color: inherit;
+            @extend %all300;
+            &:hover,
+            &.selected {
+                background: $pressColor;
+                color: $white;
+            }
+            &.no_width,
+            &.no_height {
+                display: none;
+            }
+            &.equal_width,
+            &.equal_height {
+                order: 2;
+            }
+            &.equal_width.equal_height {
+                order: 1;
+            }
+        }
+    }
+
+    .list_filter {
+        display: flex;
+        padding: 14px 4px;
+        border-top: 1px solid $textColor;
+        border-bottom: 1px solid $textColor;
+        label {
+            flex: 1;
+            margin: 0 10px;
+            position: relative;
+        }
+        .name_block {
+            @extend %size16;
+            display: block;
+            margin-bottom: 4px;
+        }
+        input {
+            @extend %size16;
+            padding: 10px;
+        }
+        .param_unit {
+            @extend %size16;
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            padding: 0 10px;
+            padding: 10px;
+            z-index: 1;
+            pointer-events: none;
+        }
+    }
+    @include mediaTo($size960) {
+        .drop_block_home.no_result:after,
+        .select_list li {
+            padding: 15px 12px;
+        }
+        .drop_btn_home input {
+            height: 50px;
+            padding: 15px 12px;
+        }
+        .list_filter {
+            padding: 10px 2px;
+        }
+    }
+}
+
+
+

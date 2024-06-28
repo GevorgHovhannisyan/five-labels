@@ -1,0 +1,32 @@
+export default {
+  stickers: [],
+  product: null,
+  directions: [],
+  direction: null,
+  quantities: [],
+  quantity: null,
+  shapes: [],
+  shape: null,
+  corners: [
+    { label: "Rounded", id: "rounded" },
+    { label: "Sharp", id: "sharp" }
+  ],
+  corner: null,
+  sizes: [],
+  size: null,
+  finishes: [],
+  finish: null,
+  materials: [],
+  material: null,
+  order_image: null,
+  calculate_data: null,
+  zip_code: null,
+  custom_quantity: false,
+  image_for_bulk: null,
+  artwork_review_image: "/images/x1/final_image.png",
+  edited_order: null,
+  rotated_images: [],
+  save_order_image: null,
+  no_save_image: null,
+  original_image: null
+}

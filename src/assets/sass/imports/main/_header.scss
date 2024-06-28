@@ -1,0 +1,679 @@
+.header {
+    z-index: 100;
+    background: $textColor;
+    color: $white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .page_container {
+        display: flex;
+        align-items: center;
+    }
+    .main_logo {
+        padding-right: 55px;
+        margin-right: auto;
+        @include mediaTo($size1200) {
+            padding-right: 30px;
+        }
+        img {
+            display: block;
+            width: auto;
+            height: 90px;
+            @extend %noBlink;
+        }
+        a {
+            display: block;
+            @include opacityHover;
+        }
+    }
+
+    .menu_block {
+        flex: 1;
+        width: 20%;
+    }
+
+    .menu_list {
+        @extend %standardList;
+        font-size: 180%;
+        line-height: 22px;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        @include mediaTo($size1200) {
+            font-size: 160%;
+            line-height: 22px;
+        }
+        a {
+            display: inline-flex;
+            vertical-align: top;
+            align-items: center;
+            color: inherit;
+        }
+        .submenu_btn:after {
+            @extend %iconElement;
+            display: block;
+        }
+        li {
+            position: relative;
+            @include mediaTo($size1200){
+                padding: 33px 13px !important;
+            }
+
+        }
+        > li > a {
+            @include standardHover;
+            &.current_page {
+                color: $pressColor;
+                @include siteColorHover;
+                &:after {
+                    color: inherit;
+                }
+            }
+        }
+    }
+
+    .submenu_list {
+        display: none;
+        @extend %standardList;
+        position: absolute;
+        background: $textColor;
+        max-height: 300px;
+        overflow-x: auto;
+        @include customScroll(6px, auto, thin, 3px, 3px, transparent, $disableColor);
+        .submenu_btn:after {
+            content: "\e903";
+            font-size: 1.2rem;
+            padding: 0 16px;
+        }
+        a {
+            @include standardBgHover;
+        }
+
+        li {
+            min-width: 190px;
+        }
+    }
+
+    .profile_actions {
+        @extend %standardList;
+    }
+
+    .menu_btn {
+        display: none;
+        position: relative;
+        padding: 0 16px;
+        background: transparent;
+        border: none;
+        color: $white;
+        margin-right: -$containerPadding;
+        @include animStyle(color 0.5s);
+        &:before {
+            @include psevdoAbs;
+            top: 50%;
+            margin-top: -1px;
+            border-top: 2px solid;
+            border-radius: 2px;
+            right: 16px;
+            width: 14px;
+            @include animStyle(opacity 0.2s);
+            @include animDelay(0.3s);
+        }
+        span {
+            display: block;
+            width: 18px;
+            height: 14px;
+            @include overHidden;
+            &:before,
+            &:after {
+                @include psevdoAbs;
+                left: 0;
+                border-top: 2px solid;
+                width: 100%;
+                border-radius: 2px;
+                @include animStyles(all 0.5s, color 0s);
+            }
+            &:before {
+                top: 0;
+                @include torigin(top left);
+            }
+            &:after{
+                bottom: 0;
+                @include torigin(bottom left);
+            }
+        }
+    }
+
+    .action_btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        min-width: 90px;
+        height: 90px;
+        padding: 20px 10px;
+        color: inherit;
+        color: $white;
+        font-family: $light;
+        font-size: 140%;
+        line-height: 17px;
+        margin-left: 20px;
+        background: $actionBtnBg;
+        @include standardHover;
+        @include mediaTo($size1200) {
+            min-width: 75px;
+        }
+        &:before {
+            display: block;
+            font-size: 2.2rem;
+        }
+        &.current_page {
+            background: $pressColor;
+            @include siteColorHover;
+            .items_count {
+                color: $white;
+            }
+        }
+        .items_count {
+            position: absolute;
+            color: $pressColor;
+            font-family: $semibold;
+            top: 5px;
+            left: 50%;
+            margin-left: 10px;
+        }
+    }
+
+    .notif_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        min-width: 90px;
+        height: 90px;
+        padding: 20px 10px;
+        color: inherit;
+        color: $white;
+        font-family: $light;
+        font-size: 140%;
+        line-height: 17px;
+        margin-left: 20px;
+        order: 5;
+        background: transparent;
+        border: none;
+        @include standardHover;
+
+        @include mediaTo($size1200){
+            min-width: 75px;
+        }
+
+        &:before {
+            display: block;
+            font-size: 2.6rem;
+        }
+         
+        .items_count {
+            position: absolute;
+            color: $white;
+            font-family: $semibold;
+            top: 18px;
+            left: 50%;
+            margin-left: 10px;
+        }
+    }
+
+    .notifications {
+        position: relative;
+        z-index: 5;
+        &.opened {
+            .notif_btn {
+                background: $pressColor;
+                @include siteColorHover;
+            }
+            .notifs_list {
+                height: auto;
+                opacity: 1;
+                @include animStyles(opacity 0.3s, height 0s 0s);
+            }
+        }
+    }
+
+    .notifs_list {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 10px;
+        background: $white;
+        outline: 1px solid $grayC5; 
+        width: 370px;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        @include animStyles(opacity 0.3s, height 0s 0.3s);
+        border-radius: 12px;
+        color: $textColor;
+        ul {
+            list-style-type: none;
+            margin: 0 6px 20px;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 360px;
+        }
+        li {
+            margin: 0 14px;
+            padding: 20px 0 14px;
+            display: flex;
+            &:not(:first-child) {
+                border-top: 1px solid $grayC5;
+            }
+            cursor: pointer;
+            @include standardHover;
+        }
+        .notif_image {
+            flex: 0 0 80px;
+            max-width: 80px;
+            margin: 0 14px;
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+        .notif_info {
+            flex: 1;
+            width: 50%;
+            padding-right: 12px;
+        }
+    }
+
+    .notifs_title {
+        @extend %textSize24;
+        letter-spacing: 0;
+        padding: 20px;
+        font-family: $semibold;
+    }
+    .notif_title {
+        @extend %size16;
+        letter-spacing: 0.02em;
+        font-family: $bold;
+        margin-bottom: 12px;
+    }
+    .notif_description {
+        @extend %size14;
+        color: $description;
+        letter-spacing: 0.02em;
+        margin-bottom: 19px;
+    }
+    .notif_date {
+        font-size: 120%;
+        line-height: 13px;
+        color: $description;
+        letter-spacing: 0.02em;
+    }
+
+    @include mediaFrom($size960) {
+        .notifications {
+            order: 2;
+        }
+    }
+    
+
+    .login_link {
+        display: inline-block;
+        vertical-align: top;
+        color: $siteColor;
+        font-size: 180%;
+        line-height: 22px;
+        letter-spacing: 0.08em;
+        @include standardHover;
+        margin: 0 10px;
+        &.current_page {
+            color: $pressColor;
+            @include siteColorHover;
+        }
+    }
+
+    &_actions {
+        display: flex;
+        align-items: center;
+    }
+
+    @include mediaFrom($size960) {
+        .menu_inner,
+        .menu_list {
+            display: flex;
+            align-items: center;
+        }
+        .menu_list {
+            > li {
+                padding: 33px 25px;
+                > .submenu_btn:after {
+                    color: $siteColor;
+                    margin-left: 10px;
+                    font-size: 0.4rem;
+                    content: "\e901";
+                }
+                > .submenu_list {
+                    left: 0;
+                    top: 100%;
+                }
+                &.opened > .submenu_btn {
+                    color: $pressColor;
+                    &:after {
+                        color: inherit;
+                        @include transStyle(scaleY(-1));
+                    }
+                }
+            }
+        }
+        .profile_actions {
+            display: flex;
+            order: 2;
+            margin-left: auto;
+        }
+        .submenu_list {
+            li {
+                &:not(:first-child):before {
+                    display: block;
+                    margin: 0 24px;
+                    border-top: 1px solid;
+                    content: "";
+                }
+                &.opened .submenu_btn:after {
+                    @include transStyle(scaleX(-1));
+                }
+            }
+            a {
+                width: 100%;
+                padding: 24px;
+            }
+            .submenu_list {
+                top: 0;
+                left: 100%;
+                border-left: 1px solid $white;
+            }
+            
+        }        
+    }
+
+    @include mediaTo($size960) {
+        .main_logo {
+            position: relative;
+            z-index: 100;
+        }
+        .menu_block {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: $textColor;
+            z-index: 99;
+            overflow: hidden;
+            @include animStyle(height 0.5s);
+            display: flex;
+            flex-direction: column;
+            &:before {
+                display: block;
+                content: "";
+                border-bottom: 1px solid;
+            }
+        }
+
+        .menu_btn {
+            display: block;
+            position: relative;
+            z-index: 100;
+        }
+        .submenu_list {
+            left: 100%;
+            width: 0;
+            display: block !important;
+            bottom: 0;
+            @include animStyle(all 0.5s);
+            z-index: 10;
+            &:not(.no_scroll) {
+                overflow-y: auto;
+            }
+            li {
+                width: 100vw;
+            }
+            &.fixed {
+                position: fixed;
+            }
+        }
+        .menu_list {
+            li.opened > .submenu_list {
+                left: 0;
+                width: 100%;
+            }
+        }
+        .menu_inner {
+            flex: 1;
+            height: 50%;
+        }
+        .profile_actions {
+            padding: 0 $containerPadding;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .action_btn {
+                height: auto;
+                background: transparent !important;
+                padding: 0;
+                font-size: 180%;
+                line-height: 22px;
+                margin-left: 0;
+                margin-top: 24px;
+                font-family: $regular;
+                min-width: 0;
+                &:before {
+                    display: none;
+                }
+            }
+        }
+        .menu_list {
+            li {
+                padding: 24px $containerPadding 0 !important;
+                > .submenu_btn:after {
+                    content: "\e903";
+                    font-size: 1.4rem;
+                    padding: 0 12px;
+                }
+                &:last-child {
+                    padding-bottom: 24px;
+                }
+            }
+            a:active {
+                background: transparent;
+                color: $pressColor;
+            }
+            .back_btn button {
+                border: none;
+                background: transparent;
+                color: $white;
+                display: flex;
+                align-items: center;
+                padding: 0;
+                font-family: $semibold;
+                text-transform: capitalize;
+                letter-spacing: 0.08em;
+                @include animStyle(color 0.15s);
+                &:active {
+                    color: $pressColor;
+                }
+                &:before {
+                    font-size: 1.4rem;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .login_link {
+            order: -1;
+        }
+        .notifs_list {
+            width: 286px;
+            margin-top: 4px;
+            ul {
+                margin: 0 0 12px;
+                max-height: 300px;
+            }
+            li {
+                margin: 0 16px 0 12px;
+                padding: 16px 0 12px;
+            }
+            .notif_image {
+                margin: 0 10px;
+                flex: 0 0 60px;
+                max-width: 60px;
+            }
+        }
+        .notifs_title {
+            padding: 16px 12px;
+            font-size: 180%;
+            line-height: 22px;
+        }
+       
+        .notif_title {
+            margin-bottom: 7px;
+        }
+        .notif_description {
+            margin-bottom: 9px;
+        }
+    }
+
+    @include mediaRange($size576, $size960) {
+        .main_logo img,
+        .menu_btn {
+            height: 74px;
+        }
+
+        .notif_btn {
+            height: 74px;
+            min-width: 74px;
+            padding: 15px 10px;
+            font-size: 130%;
+            line-height: 16px;
+            margin-left: 10px;
+            &:before {
+                font-size: 2rem;
+            }
+        }
+        .action_btn {
+            height: 74px;
+            min-width: 74px;
+            padding: 15px 10px;
+            font-size: 130%;
+            line-height: 16px;
+            margin-left: 10px;
+            &:before {
+                font-size: 2rem;
+            }
+        }
+        .login_link {
+            font-size: 160%;
+            line-height: 20px;
+        }
+        .menu_block:before {
+            min-height: 75px;
+        }
+        .submenu_list {
+            top: 75px;
+        }
+        .notifs_list {
+            right: -133px;
+        }
+    }
+
+    @include mediaTo($size576) {
+        .main_logo img,
+        .menu_btn {
+            height: 60px;
+        }
+        .main_logo {
+            padding-right: 15px;
+        }
+        .notif_btn {
+            height: 60px;
+            min-width: 60px;
+            padding: 11px 10px;
+            font-size: 120%;
+            line-height: 15px;
+            margin-left: 7px;
+            &:before {
+                font-size: 1.8rem;
+            }
+            .items_count {
+                top: 10px;
+                margin-left: 8px;
+            }
+        }
+        .action_btn {
+            height: 60px;
+            min-width: 60px;
+            padding: 11px 10px;
+            font-size: 120%;
+            line-height: 15px;
+            margin-left: 7px;
+            &:before {
+                font-size: 1.8rem;
+            }
+            .items_count {
+                top: 1px;
+                margin-left: 8px;
+            }
+        }
+        .login_link {
+            font-size: 140%;
+            line-height: 17px;
+            margin: 0;
+        }
+        .menu_block:before {
+            min-height: 61px;
+        }
+        .submenu_list {
+            top: 61px;
+        }
+        .notifs_list {
+            right: -116px;
+        }
+    }
+}
+
+
+@include mediaTo($size960) {
+    .menu_opened {
+        overflow: hidden;
+        .menu_block {
+            height: 100%;
+        }
+        .menu_btn {
+            color: $pressColor;
+            &:before {
+                opacity: 0;
+                @include animDelay(0s);
+            }
+            span {
+                &:before {
+                    @include transStyle(rotate(45deg));
+                    left: 3px;
+                }
+                &:after {
+                    @include transStyle(rotate(-45deg));
+                    left: 3px;
+                }
+            }
+        }
+    }
+}
+
+.web .notifs_list ul {
+    @include customScroll(6px, auto, thin, 3px, 3px, transparent, $gray99);
+    li:first-child:nth-last-child(n+4),
+    li:first-child:nth-last-child(n+4) ~ li {
+        margin-right: 8px;
+    }
+}

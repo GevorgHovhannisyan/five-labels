@@ -1,0 +1,197 @@
+.more_about {
+   
+    .about_sliders {
+        margin-top: 30px;
+        border: 1px solid $grayC5;
+        border-radius: 4px;
+        @include overHidden;
+    }
+    .top_slider {
+        @include slider(1);
+        .slide_inner {
+            display: flex;
+            align-items: center;
+            height: 370px;
+            padding: 20px;
+        }
+        .image_block {
+            @include colSize(6);
+            padding: 15px 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+        }
+        .info_block {
+            @include colSize(6);
+            padding: 15px 20px;
+        }
+        .descritpion_block {
+            margin-top: 24px;
+            @extend %textSize16;
+            letter-spacing: 0.02em;
+            color: $description;
+        }
+    }
+    .thumbs_slider {
+        @include slider(4);
+        margin-left: -1px;
+        border-top: 1px solid $grayC5;
+        .image_block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid $grayC5;
+            padding: 10px;
+            height: 120px;
+            cursor: pointer;
+            img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                @extend %noBlink;
+                @include animStyle(transform 0.3s);
+            }
+            &:hover img {
+                @include transStyle(scale(1.05));
+            }
+        }
+        .slick-current {
+            background: $creamyF3;
+            pointer-events: none;
+        }
+    }
+    .slick-arrow {
+        position: absolute;
+        border: none;
+        font-size: 0;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        color: $black;
+        @include standardHover;
+        z-index: 2;
+        padding: 0;
+        top: 50%;
+        margin-top: -20px;
+        &:before {
+            display: block;
+            font-size: 2.5rem;
+            @extend %iconElement;
+        }
+        &.slick-disabled {
+            color: $disableColor;
+            pointer-events: none;
+        }
+    }
+    .slick-prev {
+        left: 3px;
+        &:before {
+            content: "\e902"
+        }
+    }
+    .slick-next {
+        right: 3px;
+        &:before {
+            content: "\e903"
+        }
+    }
+    .slick-dots {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 7px 0 16px;
+        padding: 0;
+        list-style-type: none;
+        font-size: 0;
+        button {
+            width: 14px;
+            height: 14px;
+            border: none;
+            background: transparent;
+            padding: 3px;
+            &:before {
+                display: block;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $grayC5;
+                content: "";
+                @include animStyle(background-color 0.3s);
+            }
+            &:hover:before {
+                background: $hoverColor;
+            }
+        }
+        .slick-active button {
+            pointer-events: none;
+            &:before {
+                background: $pressColor;
+            }
+        }
+    }
+
+    @include mediaFrom($size1200) {
+        padding-top: 110px;
+    }
+    @include mediaRange($size960, $size1200) {
+        padding-top: 80px;
+    }
+    @include mediaRange($size576, $size960) {
+        padding-top: 60px;
+        .top_slider {
+            .slide_inner {
+                height: 360px;
+                padding: 0;
+            }
+            .image_block,
+            .info_block {
+                padding: 15px;
+            }
+        }
+        .thumbs_slider {
+            &:not(.slick-slider) > div {
+                @include colSize(4);
+            }
+            .image_block {
+                height: 100px;
+            }
+        }
+    }
+    @include mediaTo($size576) {
+        padding-top: 40px;
+        .thumbs_slider {
+            display: none;
+        }
+        .top_slider {
+            .slide_inner {
+                height: auto;
+                padding: 15px;
+                flex-wrap: wrap;
+                text-align: center;
+            }
+            .image_block,
+            .info_block {
+                padding: 0;
+                @include colSize(12);
+            }
+            .image_block {
+                height: 240px;
+                margin-bottom: 20px;
+            }
+            .descritpion_block {
+                margin-top: 20px;
+            }
+        }
+    }
+}

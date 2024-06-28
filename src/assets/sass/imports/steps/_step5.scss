@@ -1,0 +1,71 @@
+.customize_btns {
+    margin: -24px auto 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 490px;
+    justify-content: space-between;
+    li {
+        flex: 0 0 50%;
+        padding: 24px 20px 0;
+        max-width: 210px;
+    }
+    button {
+        border: none;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        background: transparent;
+        color: $pressColor;
+        @include standardHover;
+        @extend %size18;
+        font-family: $semibold;
+        &:before {
+            display: block;
+            width: 35px;
+            font-size: 2.1rem;
+            color: $textColor;
+            text-align: left;
+        }
+    }
+    @include mediaTo($size1200) {
+        margin-top: -20px;
+        li {
+            padding: 20px 10px 0;
+        }
+    }
+    @include mediaTo($size960) {
+        margin: -20px -10px 0;
+        li {
+            @include colSize(12);
+            button:before {
+                font-size: 2.3rem;
+            }
+        }
+    }
+}
+
+.order_steps {
+    .uploaded_image {
+        max-width: 100%;
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 393px;
+        }
+    }
+}
+
+@media screen and (max-width: 1049px) {
+    .konvajs-content {
+        width: 100% !important;
+        height: auto !important;
+        padding-bottom: 100%;
+    }
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

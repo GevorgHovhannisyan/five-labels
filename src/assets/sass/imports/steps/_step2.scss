@@ -1,0 +1,124 @@
+.order_steps {
+  .rolls_group {
+    margin: 0 -12px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .roll_block {
+    @include colSize(6);
+    padding: 0 12px 24px;
+    position: relative;
+    &:last-child {
+      padding-bottom: 0;
+      margin: 0 auto;
+    }
+    input {
+      @extend %maskedInput;
+      &:checked + .roll_btn {
+        background: transparent;
+        color: $pressColor;
+        border-color: $pressColor;
+        pointer-events: none;
+        .direction_name {
+          font-family: $semibold;
+        }
+        &.not_important {
+          border: 1.3px solid $pressColor;
+          background: rgba($pressColor, 0.1);
+        }
+      }
+    }
+
+    &:first-child {
+      // max-width: 100% !important;
+      // flex: 0 0 100% !important;
+      @include colSize(12);
+      // .roll_btn {
+      //     padding: 15px 40px 15px !important;
+
+      // }
+
+      .not_important {
+        border: 1.3px solid $creamyF3;
+        background: $creamyF3;
+        padding: 20px 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        font-family: $bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: inherit;
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mediaTo($size768) {
+          font-size: 16px;
+          line-height: 20px;
+        }
+        .direction_name {
+          font-size: inherit;
+        }
+      }
+    }
+  }
+  label {
+    display: block;
+    border-radius: 4px;
+    // height:100%;
+    height: auto;
+  }
+  .roll_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 26px 41px 7px;
+    background: $creamyF2;
+    border: 1px solid transparent;
+    cursor: pointer;
+    @include standardHover;
+    position: relative;
+    border-radius: inherit;
+    img {
+      display: block;
+      margin: 0 auto 15px;
+      width: 147px;
+      height: auto;
+    }
+  }
+
+  .number_block {
+    position: absolute;
+    top: 9px;
+    left: 11px;
+    @extend %size18;
+    font-family: $bold;
+    color: $black;
+  }
+  .direction_name {
+    display: block;
+    @extend %size14; //size16
+  }
+  @include mediaTo($size1200) {
+    .roll_btn {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  @include mediaRange($size576, $size960) {
+    .roll_block {
+      flex: 0 0 100%;
+      max-width: 270px;
+      margin: 0 auto;
+    }
+  }
+  @include mediaTo($size480) {
+    .roll_block {
+      flex: 0 0 100%;
+      max-width: 270px;
+      margin: 0 auto;
+    }
+  }
+}
